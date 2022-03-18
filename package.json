@@ -1,0 +1,12 @@
+{
+  "name": "gazeta-api",
+  "version": "1.0.0",
+  "description": "Official API For Gazeta Metobajraktari",
+  "main": "./src/server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ."
+  },
+  "author": "Nart Aliti",
+  "license": "ISC"
+}

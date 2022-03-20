@@ -1,5 +1,6 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
+const generateAccessToken = require("../../../functions/generateAccessToken");
 const authenticateToken = require("../../../middleware/authenticateToken");
 const checkAPIKey = require("../../../middleware/checkAPIKey");
 const router = express.Router();
@@ -42,7 +43,8 @@ router.get("/object", checkAPIKey, authenticateToken, (req, res) => {
 
 router.get("/sync", checkAPIKey, authenticateToken, (req, res) => {
   User.findOne({ _id: req.user._id }).then((user) => {
-    res.json({ error: false, data: { ...user }, message: "Synced User" });
+    const token = generateAccessToken(user);
+    res.json({ error: false, data: { user, token }, message: "Synced User" });
   });
 });
 

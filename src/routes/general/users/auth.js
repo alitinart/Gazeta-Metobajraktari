@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const checkAPIKey = require("../../../middleware/checkAPIKey");
 const generateAccessToken = require("../../../functions/generateAccessToken");
 const checkSuperSecretPassword = require("../../../middleware/checkSuperSecretPassword");
+const authenticateToken = require("../../../middleware/authenticateToken");
 
 const User = mongoose.model("User");
 const RToken = mongoose.model("RToken");
@@ -101,7 +102,7 @@ router.post("/login", checkAPIKey, (req, res) => {
  *
  */
 
-router.post("/logout", (req, res) => {
+router.post("/logout", checkAPIKey, authenticateToken, (req, res) => {
   const { rTokenId } = req.body;
   RToken.findOneAndRemove({ _id: rTokenId }).then(() => {
     res.json({

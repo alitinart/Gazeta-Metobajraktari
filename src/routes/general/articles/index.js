@@ -135,7 +135,7 @@ router.get("/search/:query", checkAPIKey, (req, res) => {
   Article.find({}).then((articles) => {
     let results = [];
     articles.forEach((e) => {
-      if (e.toLowerCase().includes(req.params.query.toLowerCase())) {
+      if (e.title.toLowerCase().includes(req.params.query.toLowerCase())) {
         results.push(e);
       }
     });

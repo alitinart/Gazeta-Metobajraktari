@@ -92,4 +92,28 @@ router.delete("/delete/:id", checkAPIKey, authenticateToken, (req, res) => {
   });
 });
 
+/**
+ *
+ * Get Article by ID
+ * Method: GET
+ *
+ */
+
+router.get("/get/:id", checkAPIKey, (req, res) => {
+  Article.findOne({ _id: req.params.id }).then((article) => {
+    if (!article) {
+      return res.json({
+        error: true,
+        data: {},
+        message: "Nuk u gjet artikull me atë ID",
+      });
+    }
+    res.json({
+      error: false,
+      data: { ...article },
+      message: "Artikulli u gjet",
+    });
+  });
+});
+
 module.exports = router;

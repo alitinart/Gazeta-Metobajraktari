@@ -37,6 +37,7 @@ router.post("/create", checkAPIKey, authenticateToken, (req, res) => {
     text,
     cover,
     summary,
+    timestamp: new Date(),
     authorId: user._id,
   });
 

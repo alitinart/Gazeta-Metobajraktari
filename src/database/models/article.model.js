@@ -6,6 +6,7 @@ const Article = new mongoose.Schema({
   summary: { type: String, require: "This field is required" },
   cover: { type: String, require: "This field is required" },
   authorId: { type: String, require: "This field is requrired" },
+  timestamp: { type: Date, require: "This field is required" },
 });
 
 mongoose.model("Article", Article);

@@ -75,4 +75,21 @@ router.patch("/patch/:id", checkAPIKey, authenticateToken, (req, res) => {
     });
 });
 
+/**
+ *
+ * Delete Article
+ * Method: DELETE
+ *
+ */
+
+router.delete("/delete/:id", checkAPIKey, authenticateToken, (req, res) => {
+  Article.findOneAndDelete({ _id: req.params.id }).then((article) => {
+    res.json({
+      error: false,
+      data: { ...article },
+      message: "Artikulli u fshi me sukses.",
+    });
+  });
+});
+
 module.exports = router;

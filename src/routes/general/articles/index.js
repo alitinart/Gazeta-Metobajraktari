@@ -100,20 +100,28 @@ router.delete("/delete/:id", checkAPIKey, authenticateToken, (req, res) => {
  */
 
 router.get("/get/:id", checkAPIKey, (req, res) => {
-  Article.findOne({ _id: req.params.id }).then((article) => {
-    if (!article) {
-      return res.json({
-        error: true,
-        data: {},
-        message: "Nuk u gjet artikull me atë ID",
+  Article.findOne({ _id: req.params.id })
+    .then((article) => {
+      if (!article) {
+        return res.json({
+          error: true,
+          data: {},
+          message: "Nuk u gjet artikull me atë ID",
+        });
+      }
+      res.json({
+        error: false,
+        data: { ...article._doc },
+        message: "Artikulli u gjet",
       });
-    }
-    res.json({
-      error: false,
-      data: { ...article },
-      message: "Artikulli u gjet",
+    })
+    .catch((err) => {
+      res.json({
+        error: true,
+        message: "Nuk u gjet artikull me atë ID",
+        data: {},
+      });
     });
-  });
 });
 
 module.exports = router;

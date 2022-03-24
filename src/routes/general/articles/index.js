@@ -30,12 +30,13 @@ router.get("/", checkAPIKey, async (req, res) => {
 
 router.post("/create", checkAPIKey, authenticateToken, (req, res) => {
   const user = req.user;
-  const { title, text, cover } = req.body;
+  const { title, text, cover, summary } = req.body;
 
   const newArticle = new Article({
     title,
     text,
     cover,
+    summary,
     authorId: user._id,
   });
 

@@ -132,7 +132,7 @@ router.get("/get/:id", checkAPIKey, (req, res) => {
  */
 
 router.get("/search/:query", checkAPIKey, (req, res) => {
-  Article.find({ title: req.params.query }).then((articles) => {
+  Article.find({ title: req.params.query.toUpperCase() }).then((articles) => {
     if (articles.length <= 0) {
       return res.json({
         error: true,

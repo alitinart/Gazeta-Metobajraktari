@@ -132,8 +132,14 @@ router.get("/get/:id", checkAPIKey, (req, res) => {
  */
 
 router.get("/search/:query", checkAPIKey, (req, res) => {
-  Article.find({ title: req.params.query.toUpperCase() }).then((articles) => {
-    if (articles.length <= 0) {
+  Article.find({}).then((articles) => {
+    let results = [];
+    articles.forEach((e) => {
+      if (e.toLowerCase().includes(req.params.query.toLowerCase())) {
+        results.push(e);
+      }
+    });
+    if (results.length <= 0) {
       return res.json({
         error: true,
         message: "Asnjë artikull nuk u gjet me atë titull",
@@ -144,7 +150,7 @@ router.get("/search/:query", checkAPIKey, (req, res) => {
     res.json({
       error: false,
       message: "",
-      data: [...articles],
+      data: [...results],
     });
   });
 });

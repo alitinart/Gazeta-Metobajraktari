@@ -62,9 +62,6 @@ export default function Header() {
             <Link href={"/"}>Ballina</Link>
           </div>
           <div className={router.pathname == "/info" ? "active" : ""}>
-            <Link href={"/lajmet"}>Lajme</Link>
-          </div>
-          <div className={router.pathname == "/info" ? "active" : ""}>
             <Link href={"/info"}>Për Ne</Link>
           </div>
         </ul>
@@ -75,9 +72,6 @@ export default function Header() {
             <Link href={"/"} className={router.pathname == "/" ? "active" : ""}>
               Ballina
             </Link>
-          </div>
-          <div className={router.pathname == "/lajmet" ? "active" : ""}>
-            <Link href={"/lajmet"}>Lajmet</Link>
           </div>
           <div className={router.pathname == "/info" ? "active" : ""}>
             <Link href={"/info"}>Për Ne</Link>

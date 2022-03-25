@@ -1,12 +1,14 @@
 import Head from "next/head";
-import Router from "next/router";
+import { articleRequests } from "../../services/request.service";
+import { stateFromHTML } from "draft-js-import-html";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { articleRequests } from "../../services/request.service";
-import { EditorState, ContentState } from "draft-js";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
-import NotificationProvider from "../../services/notifications.service";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import NotificationService from "../../services/notifications.service";
+import Router from "next/router";
+
 import dynamic from "next/dynamic";
 
 const Editor = dynamic(
@@ -14,31 +16,46 @@ const Editor = dynamic(
   { ssr: false }
 );
 
-export default function CreateArticle() {
+export async function getServerSideProps({ params }) {
+  const { data } = await articleRequests.getArticleById(params.id);
+
+  return { props: { article: { ...data } } };
+}
+
+export default function EditArticle({ article }) {
   const state = useSelector((state) => state);
 
-  const [title, setTitle] = useState();
-  const [cover, setCover] = useState();
-  const [summary, setSummary] = useState();
+  const [title, setTitle] = useState(article.title);
+  const [cover, setCover] = useState(article.cover);
+  const [summary, setSummary] = useState(article.summary);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
 
+  useEffect(() => {
+    setEditorState(EditorState.createWithContent(stateFromHTML(article.text)));
+
+    return () => {};
+  }, []);
+
   const createArticle = async () => {
-    const resCreateArticle = await articleRequests.createArticle(
-      state.token,
-      title,
-      stateToHTML(editorState.getCurrentContent()),
-      cover,
-      summary
+    const resUpdateArticle = await articleRequests.updateArticle(
+      {
+        title,
+        cover,
+        summary,
+        text: stateToHTML(editorState.getCurrentContent()),
+      },
+      article._id,
+      state.token
     );
 
-    if (resCreateArticle.error) {
-      return NotificationProvider("Error", resCreateArticle.message, "danger");
+    if (resUpdateArticle.error) {
+      return NotificationService("Error", resUpdateArticle.message, "danger");
     }
 
-    NotificationProvider("Sukses", resCreateArticle.message, "success");
-    Router.push("/");
+    NotificationService("Sukses", resUpdateArticle.message, "success");
+    Router.push(`/article/${article._id}`);
   };
 
   return (
@@ -47,7 +64,7 @@ export default function CreateArticle() {
         <title>Krijo Artikull</title>
       </Head>
       <div className="create-article">
-        <h1 className="title">Krijo Artikull</h1>
+        <h1 className="title">Edito Artikullin</h1>
         <form
           onSubmit={(e) => {
             e.preventDefault();

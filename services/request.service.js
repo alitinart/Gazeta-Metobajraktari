@@ -85,17 +85,17 @@ export const userRequests = {
 };
 
 export const articleRequests = {
-  createArticle: async (token, title, text, cover) => {
+  createArticle: async (token, title, text, cover, summary) => {
     return await request(
       "/general/articles/create",
       "POST",
-      { title, text, cover },
+      { title, text, cover, summary },
       { Authorization: `Bearer ${token}` }
     );
   },
-  updateArticle: async (updatedArticle, token) => {
+  updateArticle: async (updatedArticle, id, token) => {
     return await request(
-      "/general/articles/patch",
+      `/general/articles/patch/${id}`,
       "PATCH",
       { ...updatedArticle },
       { Authorization: `Bearer ${token}` }
@@ -103,5 +103,11 @@ export const articleRequests = {
   },
   getAllArticles: async () => {
     return await request("/general/articles/", "GET", {}, {});
+  },
+  getArticleById: async (id) => {
+    return await request(`/general/articles/get/${id}`, "GET", {}, {});
+  },
+  search: async (query) => {
+    return await request(`/general/articles/search/${query}`, "GET", {}, {});
   },
 };

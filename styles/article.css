@@ -1,0 +1,133 @@
+.article-content {
+  color: black;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  padding: 20px;
+}
+
+.article-content .cover {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.article-content .article-title {
+  font-size: 40px;
+}
+
+.article-content .timestamp {
+  color: gray;
+  font-size: 12px;
+}
+
+.article-content .text {
+  margin: 20px 0;
+}
+
+.article-content .text p {
+  margin: 5px 0;
+}
+
+.article-content .text img {
+  width: 100%;
+  height: auto;
+}
+
+.article-content .text figure {
+  margin: 10px 0;
+  width: 100%;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+.edit-button {
+  width: 100%;
+  background-color: #0a0e3c !important;
+  color: white !important;
+  border: #0a0e3c 2px solid !important;
+}
+
+.edit-button:hover {
+  background-color: transparent !important;
+  color: #0a0e3c !important;
+}
+
+.cards {
+  padding: 0 5%;
+  margin-top: 75px;
+  -webkit-animation: fadeIn 2s forwards;
+          animation: fadeIn 2s forwards;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards .article-card {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #0a0e3c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.cards .article-card:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+}
+
+.cards .article-card .article-summary {
+  margin: 10px 0;
+}
+
+.cards .article-card .cover {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+@media screen and (max-width: 1227px) {
+  .cards {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 747px) {
+  .cards {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+/*# sourceMappingURL=article.css.map */

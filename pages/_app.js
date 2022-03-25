@@ -32,7 +32,6 @@ function MyApp({ Component, pageProps }) {
       <ReactNotifications />
       <Component {...pageProps} />
       <AddArticle />
-      <Credits />
       <Footer />
     </Provider>
   );

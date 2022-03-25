@@ -19,7 +19,7 @@ export default function Home({ articles }) {
 
   useEffect(() => {
     let sorted = [];
-    setLatestArticle(articles.pop());
+    setLatestArticle(articles.slice(-1)[0]);
     articles.forEach((element) => {
       sorted.unshift(element);
     });

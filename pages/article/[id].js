@@ -41,7 +41,7 @@ export default function Article({ article, articles }) {
         <title>{article.title}</title>
         <meta name="description" content={article.summary}></meta>
       </Head>
-      <div className="main">
+      <div className="main main-article">
         <div className="latest-article article-content">
           {state ? (
             state.token ? (

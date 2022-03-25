@@ -43,6 +43,13 @@ a {
   height: fit-content;
 }
 
+.main-article {
+  height: fit-content;
+  .sidebar {
+    margin: 0 0 0 20px;
+  }
+}
+
 .mobile {
   background-color: #0a0e3c;
   display: none;

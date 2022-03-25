@@ -44,6 +44,16 @@ a {
   height: fit-content;
 }
 
+.main-article {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.main-article .sidebar {
+  margin: 0 0 0 20px;
+}
+
 .mobile {
   background-color: #0a0e3c;
   display: none;

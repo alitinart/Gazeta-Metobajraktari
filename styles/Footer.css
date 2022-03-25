@@ -7,3 +7,16 @@
   width: 100%;
   bottom: 0;
 }
+
+.animate-footer {
+  animation: slideOut 6s forwards;
+}
+
+@keyframes slideOut {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -7000px;
+  }
+}

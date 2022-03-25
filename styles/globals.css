@@ -3,6 +3,7 @@
 @import url("./main.css");
 @import url("./createArticle.css");
 @import url("./article.css");
+@import url("./info.css");
 html,
 body {
   padding: 0;

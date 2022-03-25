@@ -1,0 +1,52 @@
+.info {
+  padding: 50px 0;
+}
+
+.team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title {
+  font-size: 45px;
+  text-decoration: underline;
+}
+
+.member {
+  text-align: center;
+  margin: 10px 20px;
+  background-color: #0a0e3c;
+  padding: 30px;
+  border-radius: 3px;
+}
+
+.member img {
+  border-radius: 100%;
+  background-color: white;
+  height: 300px;
+}
+
+.member .name {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.member .position {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.member .saying {
+  font-style: italic;
+}
+/*# sourceMappingURL=info.css.map */

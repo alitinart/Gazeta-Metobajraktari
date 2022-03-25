@@ -1,0 +1,37 @@
+.info {
+  padding: 50px 0;
+}
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  font-size: 45px;
+  text-decoration: underline;
+}
+.member {
+  text-align: center;
+  margin: 10px 20px;
+  img {
+    border-radius: 100%;
+    background-color: white;
+    height: 300px;
+  }
+  .name {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .position {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  .saying {
+    font-style: italic;
+  }
+  background-color: #0a0e3c;
+  padding: 30px;
+  border-radius: 3px;
+}

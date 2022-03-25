@@ -39,7 +39,7 @@ export default function Article({ article, articles }) {
     <>
       <Head>
         <title>{article.title}</title>
-        <meta name="description" content={article.title}></meta>
+        <meta name="description" content={article.summary}></meta>
       </Head>
       <div className="main">
         <div className="latest-article article-content">

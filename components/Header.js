@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { userRequests } from "../services/request.service";
 
+import Logo from "../assets/images/logo.png";
+
 export default function Header() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -56,18 +58,22 @@ export default function Header() {
 
   return (
     <>
-      <div className="header-mobile">
-        <ul className="menu">
-          <div className={router.pathname == "/info" ? "active" : ""}>
-            <Link href={"/"}>Ballina</Link>
-          </div>
-          <div className={router.pathname == "/info" ? "active" : ""}>
-            <Link href={"/info"}>Për Ne</Link>
-          </div>
-        </ul>
+      <div className="mobile">
+        <img src={Logo.src} width="100px" className="mobile-logo" />
+        <div className="header-mobile">
+          <ul className="menu">
+            <div className={router.pathname == "/info" ? "active" : ""}>
+              <Link href={"/"}>Ballina</Link>
+            </div>
+            <div className={router.pathname == "/info" ? "active" : ""}>
+              <Link href={"/info"}>Për Ne</Link>
+            </div>
+          </ul>
+        </div>
       </div>
       <div className="header">
         <ul className="nav">
+          <img src={Logo.src} width="100px" />
           <div className={router.pathname == "/" ? "active" : ""}>
             <Link href={"/"} className={router.pathname == "/" ? "active" : ""}>
               Ballina

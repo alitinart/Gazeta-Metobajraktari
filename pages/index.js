@@ -50,11 +50,14 @@ export default function Home({ articles }) {
           </ul>
         </div>
       </div>
-      <div className="cards">
-        {sortedArticles.map((article) => {
-          return <ArticleCard article={article} key={article._id} />;
-        })}
-      </div>
+      <section className="container">
+        <h1 className="title text-left">Lajmet më të fundit</h1>
+        <div className="cards">
+          {sortedArticles.map((article) => {
+            return <ArticleCard article={article} key={article._id} />;
+          })}
+        </div>
+      </section>
     </>
   );
 }

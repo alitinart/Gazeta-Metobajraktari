@@ -4,6 +4,7 @@
   display: -ms-flexbox;
   display: flex;
   overflow: hidden;
+  height: calc(100vh - 130px);
 }
 
 .main .latest-article {
@@ -16,8 +17,8 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  -webkit-animation: slideRight forwards 2s;
-          animation: slideRight forwards 2s;
+  -webkit-animation: slideLeft forwards 2s;
+          animation: slideLeft forwards 2s;
   background-size: cover;
   -webkit-transition: 0.3s all ease-in-out;
   transition: 0.3s all ease-in-out;
@@ -62,10 +63,12 @@
 }
 
 .main .sidebar {
+  margin: auto 0;
   width: 35%;
   margin-left: 20px;
-  -webkit-animation: slideLeft 2s forwards;
-          animation: slideLeft 2s forwards;
+  background-color: white;
+  -webkit-animation: slideRight 2s forwards;
+          animation: slideRight 2s forwards;
 }
 
 .main .sidebar ul {
@@ -113,25 +116,25 @@
   margin: 5px 0;
 }
 
-@-webkit-keyframes slideRight {
-  0% {
-    margin-left: -1500px;
-  }
-  100% {
-    margin-left: 0px;
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    margin-left: -1500px;
-  }
-  100% {
-    margin-left: 0px;
-  }
-}
-
 @-webkit-keyframes slideLeft {
+  0% {
+    margin-left: -1500px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    margin-left: -1500px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@-webkit-keyframes slideRight {
   0% {
     margin-right: -1500px;
   }
@@ -140,7 +143,7 @@
   }
 }
 
-@keyframes slideLeft {
+@keyframes slideRight {
   0% {
     margin-right: -1500px;
   }

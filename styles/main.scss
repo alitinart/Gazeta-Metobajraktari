@@ -2,6 +2,7 @@
   padding: 3rem 5%;
   display: flex;
   overflow: hidden;
+  height: calc(100vh - 130px);
 
   .latest-article {
     margin: auto 0;
@@ -14,7 +15,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    animation: slideRight forwards 2s;
+    animation: slideLeft forwards 2s;
     .tint {
       padding: 15px;
       border-radius: 3px;
@@ -44,9 +45,11 @@
   }
 
   .sidebar {
+    margin: auto 0;
     width: 35%;
     margin-left: 20px;
-    animation: slideLeft 2s forwards;
+    background-color: white;
+    animation: slideRight 2s forwards;
     ul {
       border-radius: 3px;
       list-style-type: none;
@@ -88,7 +91,7 @@
   }
 }
 
-@keyframes slideRight {
+@keyframes slideLeft {
   0% {
     margin-left: -1500px;
   }
@@ -97,7 +100,7 @@
   }
 }
 
-@keyframes slideLeft {
+@keyframes slideRight {
   0% {
     margin-right: -1500px;
   }

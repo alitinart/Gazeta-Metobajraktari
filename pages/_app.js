@@ -11,6 +11,7 @@ import AddArticle from "../components/AddArticle";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Router from "next/router";
+import Footer from "../components/Footer";
 
 NProgress.configure({
   minimum: 0.3,
@@ -30,6 +31,7 @@ function MyApp({ Component, pageProps }) {
       <ReactNotifications />
       <Component {...pageProps} />
       <AddArticle />
+      <Footer />
     </Provider>
   );
 }

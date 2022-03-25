@@ -4,6 +4,7 @@
 @import url("./createArticle.css");
 @import url("./article.css");
 @import url("./info.css");
+@import url("./Footer.css");
 html,
 body {
   padding: 0;
@@ -26,7 +27,7 @@ a {
 }
 
 .add-article-button {
-  background-color: #0a0e3c;
+  background-color: #060822;
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -34,6 +35,23 @@ a {
   padding: 10px 13px;
   cursor: pointer;
   border-radius: 100%;
+  z-index: 100;
+}
+
+.search-results {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.mobile {
+  background-color: #0a0e3c;
+  display: none;
+}
+
+.mobile img {
+  margin: 0 auto;
+  display: block;
 }
 
 .header,
@@ -58,8 +76,8 @@ a {
           justify-content: center;
 }
 
-.header .nav .active,
-.header-mobile .nav .active {
+.header .nav .active a,
+.header-mobile .nav .active a {
   border-bottom: 3px white solid;
 }
 
@@ -222,7 +240,7 @@ a {
   padding: 5px;
   margin: 0 auto;
   font-size: 18px;
-  border: 3px white solid;
+  border: 2px white solid;
   border-radius: 3px;
   background-color: white;
   cursor: pointer;
@@ -237,8 +255,7 @@ a {
 }
 
 .btn:hover {
-  background-color: #0a0e3c;
-  border: 3px #0a0e3c solid;
+  background-color: transparent;
   color: white;
 }
 
@@ -255,6 +272,9 @@ a {
 }
 
 @media screen and (max-width: 769px) {
+  .mobile {
+    display: block;
+  }
   .nav {
     display: none !important;
   }
@@ -274,6 +294,17 @@ a {
     display: -ms-flexbox;
     display: flex;
   }
+}
+
+.search {
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  padding: 10px 0;
+}
+
+.search-container {
+  margin: auto 0;
 }
 
 @media screen and (max-width: 351px) {

@@ -5,7 +5,10 @@ import Head from "next/head";
 export async function getServerSideProps({ params }) {
   const { data } = await articleRequests.search(params.query);
 
-  return { props: { results: [...data], query: params.query } };
+  if (data.length > 0) {
+    return { props: { results: [...data], query: params.query } };
+  }
+  return { props: { results: [], query: params.query } };
 }
 
 export default function SearchResults({ results, query }) {
@@ -23,11 +26,15 @@ export default function SearchResults({ results, query }) {
         >
           Kërkim për: {query}{" "}
         </h1>
-        <div className="cards">
-          {results.map((article) => {
-            return <ArticleCard article={article} />;
-          })}
-        </div>
+        {results.length > 0 ? (
+          <div className="container cards">
+            {results.map((article) => {
+              return <ArticleCard article={article} />;
+            })}
+          </div>
+        ) : (
+          <h1 className="title">Nuk ka asnjë artikull me atë titull</h1>
+        )}
       </div>
     </>
   );

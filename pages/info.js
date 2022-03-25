@@ -6,27 +6,27 @@ export default function Info() {
       name: "Nart Aliti",
       image:
         "https://cdn.discordapp.com/attachments/718828137080815687/956938725546405899/Wondering.png",
-      saying: "Jeta është si një lojë pokeri",
+      saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       position: "Autor / Developer",
     },
     {
       name: "Alea Shulemaja",
       image: "https://forums.macrumors.com/attachments/787710/",
-      saying: "Ka dritë në fund të tunelit",
+      saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit  ",
       position: "Autore",
     },
     {
       name: "Rritë Bajraj",
       image:
         "https://i.pinimg.com/236x/9b/0e/4d/9b0e4daa1870231d3a69b8d5a1bbd81a.jpg",
-      saying: "Puno puno, natë e ditë, që t'shohim pak dritë",
+      saying: "At vero eos et accusamus et iusto odio dignissimos",
       position: "Autore",
     },
     {
       name: "Eris Gashi",
       image:
         "https://img-12.stickers.cloud/packs/b2f7b08e-f29f-4016-9446-946a380f69e9/webp/a4cb5721-aa66-44ea-8982-64553b1eb1ff.webp",
-      saying: "Autor jom",
+      saying: "Temporibus autem quibusdam et aut officiis",
       position: "Autor",
     },
   ];

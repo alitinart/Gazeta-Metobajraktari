@@ -109,7 +109,7 @@ export default function EditArticle({ article }) {
             placeholder="Përmbledhja"
           />
           <button className="submitButton" type="submit">
-            Krijo
+            Edito
           </button>
         </form>
       </div>

@@ -126,4 +126,21 @@ router.get("/:id", checkAPIKey, (req, res) => {
   });
 });
 
+/**
+ *
+ * Update User
+ * Method: PATCH
+ *
+ */
+
+router.patch("/update", checkAPIKey, authenticateToken, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { $set: { ...req.body } })
+    .then(() =>
+      res.json({ error: false, message: "Informatat u ndryshuan me sukses" })
+    )
+    .catch((err) =>
+      res.json({ error: true, message: "Error", data: { ...err } })
+    );
+});
+
 module.exports = router;

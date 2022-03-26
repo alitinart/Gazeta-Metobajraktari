@@ -10,7 +10,7 @@ const appReducer = (
         ...state,
         token: action.token,
         rTokenId: action.rTokenId,
-        userObject: action.rTokenId,
+        userObject: action.userObject,
       };
     case "sync":
       return {

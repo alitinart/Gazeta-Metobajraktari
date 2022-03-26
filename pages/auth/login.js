@@ -37,7 +37,7 @@ export default function Register({ data }) {
       type: "login",
       token: res.data.token,
       rTokenId: res.data.rTokenID,
-      userObject: resUserObject.data,
+      userObject: { ...resUserObject.data },
     });
 
     Router.push("/");

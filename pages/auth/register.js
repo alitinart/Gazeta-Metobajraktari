@@ -13,6 +13,7 @@ export default function Register({ data }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
+  const [type, setType] = useState("student");
 
   useEffect(async () => {
     if (await authGuard(localStorage.getItem("token"))) {
@@ -24,26 +25,39 @@ export default function Register({ data }) {
   const SUPER_SECRET_PASSWORD = process.env.NEXT_PUBLIC_SUPER_SECRET_PASSWORD;
 
   const onSubmit = async () => {
-    if (code !== SUPER_SECRET_PASSWORD) {
+    if (password.length < 8) {
       return NotificationService(
         "Error",
-        "Kodi Sekret nuk është korrekt",
+        "Ju lutemi vendoseni një fjalë kalim më të sigurt",
         "danger"
       );
     }
-
-    const resData = await userRequests.registerRequest(
-      email,
-      password,
-      classNumber,
-      fullName,
-      code
-    );
-    if (resData.error) {
-      return NotificationService("Error", resData.message, "danger");
+    if (type === "autor") {
+      const resData = await userRequests.registerAutorRequest(
+        email,
+        password,
+        classNumber,
+        fullName,
+        code
+      );
+      if (resData.error) {
+        return NotificationService("Error", resData.message, "danger");
+      }
+      NotificationService("Sukses", resData.message, "success");
+      Router.push("/auth/login");
+    } else if (type === "student") {
+      const resData = await userRequests.registerStudentRequest(
+        email,
+        password,
+        classNumber,
+        fullName
+      );
+      if (resData.error) {
+        return NotificationService("Error", resData.message, "danger");
+      }
+      NotificationService("Sukses", resData.message, "success");
+      Router.push("/auth/login");
     }
-    NotificationService("Sukses", resData.message, "success");
-    Router.push("/");
   };
 
   return (
@@ -100,15 +114,29 @@ export default function Register({ data }) {
               setPassword(e.target.value);
             }}
           />
-          <input
-            className="form-control"
-            type={"password"}
-            placeholder="Kodi"
-            value={code}
+          <select
+            value={type}
             onChange={(e) => {
-              setCode(e.target.value);
+              setType(e.target.value);
             }}
-          />
+            className="form-control"
+          >
+            <option value={"student"}>Student</option>
+            <option value={"autor"}>Autor</option>
+          </select>
+          {type === "autor" ? (
+            <input
+              className="form-control"
+              type={"password"}
+              placeholder="Kodi"
+              value={code}
+              onChange={(e) => {
+                setCode(e.target.value);
+              }}
+            />
+          ) : (
+            <></>
+          )}
           <p className={styles.changeParagraph}>
             Keni llogari ?{" "}
             <span className={styles.changeLink}>

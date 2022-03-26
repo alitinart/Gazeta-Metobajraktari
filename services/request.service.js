@@ -30,6 +30,19 @@ async function request(pathname, method, data, providedHeaders) {
 }
 
 export const userRequests = {
+  // Update User
+  updateUser: async (token, body) => {
+    return await request(
+      `/general/users/update`,
+      "PATCH",
+      { ...body },
+      { Authorization: `Bearer ${token}` }
+    );
+  },
+  // Get User from ID
+  getUserById: async (id) => {
+    return await request(`/general/users/${id}`, "GET", {}, {});
+  },
   // Sync User
   syncUser: async (token) => {
     return await request(
@@ -48,12 +61,34 @@ export const userRequests = {
       { Authorization: `Bearer ${token}` }
     );
   },
-  // Register Request
-  registerRequest: async (email, password, classNumber, fullName, code) => {
+  // Register Autor Request
+  registerAutorRequest: async (
+    email,
+    password,
+    classNumber,
+    fullName,
+    code
+  ) => {
     return await request(
-      "/general/users/auth/register",
+      "/general/users/auth/register/autor",
       "POST",
-      { email, password, classNumber, fullName, superSecret: code },
+      {
+        email,
+        password,
+        classNumber,
+        fullName,
+        role: "autor",
+        superSecret: code,
+      },
+      {}
+    );
+  },
+  // Register Student Request
+  registerStudentRequest: async (email, password, classNumber, fullName) => {
+    return await request(
+      "/general/users/auth/register/student",
+      "POST",
+      { email, password, classNumber, fullName, role: "student" },
       {}
     );
   },

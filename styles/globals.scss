@@ -1,11 +1,13 @@
+@use "./Main/main.scss";
+@use "./CreateArticle/createArticle.scss";
+@use "./Article/article.scss";
+@use "./Info/info.scss";
+@use "./Components/Footer.scss";
+// @use "./Account/Account.scss";
+@import url("./Account/Account.css");
+
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,900,900italic);
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
-
-@import url("./Main/main.css");
-@import url("./CreateArticle/createArticle.css");
-@import url("./Article/article.css");
-@import url("./Info/info.css");
-@import url("./Components/Footer.css");
 
 html,
 body {
@@ -195,6 +197,28 @@ a {
 
 .menu {
   display: none;
+}
+
+.account-button {
+  background-color: #060822;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 30px;
+  padding: 10px 13px;
+  cursor: pointer;
+  border-radius: 100%;
+  z-index: 100;
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 867px) {
+  .username {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 769px) {

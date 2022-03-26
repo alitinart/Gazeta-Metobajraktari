@@ -6,7 +6,7 @@ export default function AddArticle() {
   const state = useSelector((state) => state);
 
   return state ? (
-    state.token ? (
+    state.userObject && state.userObject.role === "autor" ? (
       <div className="add-article-button">
         <i
           className="bi bi-plus"

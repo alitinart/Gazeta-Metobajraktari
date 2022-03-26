@@ -1,0 +1,35 @@
+.account {
+  padding: 50px 5%;
+  .info-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    div {
+      background-color: #0a0e3c;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 3px;
+      h1 {
+        text-align: center;
+      }
+      input {
+        padding: 10px;
+        margin: 20px auto;
+        display: block;
+      }
+      button {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1056px) {
+  .info-cards {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media screen and (max-width: 712px) {
+  .info-cards {
+    grid-template-columns: 1fr !important;
+  }
+}

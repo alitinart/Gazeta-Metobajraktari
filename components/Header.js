@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Search from "./Search";
 import Link from "next/link";
 
+import Router from "next/router";
+
 import NotificationService from "../services/notifications.service";
 
 import { useRouter } from "next/router";
@@ -54,6 +56,7 @@ export default function Header() {
     dispatch({
       type: "logout",
     });
+    Router.push("/");
   };
 
   return (
@@ -87,6 +90,16 @@ export default function Header() {
               <div className="secondary">
                 <a onClick={logout}>Ç'kyçuni</a>
               </div>
+              <h1
+                className="username"
+                style={{
+                  fontSize: "20px",
+                  margin: "auto",
+                  textDecoration: "underline",
+                }}
+              >
+                {state.userObject.fullName}
+              </h1>
             </>
           ) : (
             <div className={router.pathname.includes("auth") ? "active" : ""}>

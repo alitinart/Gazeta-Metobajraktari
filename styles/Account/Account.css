@@ -1,0 +1,36 @@
+.account {
+  padding: 50px 5%;
+}
+.account .info-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.account .info-cards div {
+  background-color: #0a0e3c;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
+}
+.account .info-cards div h1 {
+  text-align: center;
+}
+.account .info-cards div input {
+  padding: 10px;
+  margin: 20px auto;
+  display: block;
+}
+.account .info-cards div button {
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1056px) {
+  .info-cards {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media screen and (max-width: 712px) {
+  .info-cards {
+    grid-template-columns: 1fr !important;
+  }
+}/*# sourceMappingURL=Account.css.map */

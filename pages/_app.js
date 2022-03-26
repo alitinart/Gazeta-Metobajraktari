@@ -13,6 +13,7 @@ import "nprogress/nprogress.css";
 import Router from "next/router";
 import Footer from "../components/Footer";
 import Credits from "../components/Credits";
+import AccountIcon from "../components/AccountIcon";
 
 NProgress.configure({
   minimum: 0.3,
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
       <ReactNotifications />
       <Component {...pageProps} />
       <AddArticle />
+      <AccountIcon />
       <Footer />
     </Provider>
   );

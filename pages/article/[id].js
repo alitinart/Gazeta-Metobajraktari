@@ -44,7 +44,7 @@ export default function Article({ article, articles }) {
       <div className="main main-article">
         <div className="latest-article article-content">
           {state ? (
-            state.token ? (
+            state.userObject && state.userObject.role === "autor" ? (
               <button
                 className="btn edit-button"
                 style={{ marginBottom: "10px" }}

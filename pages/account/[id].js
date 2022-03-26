@@ -98,7 +98,7 @@ export default function Account({ userObject }) {
     }
   };
 
-  return state.userObject ? (
+  return state && state.userObject ? (
     <>
       <Head>
         <title>{state.userObject.fullName}</title>

@@ -138,6 +138,22 @@ export const userRequests = {
 };
 
 export const articleRequests = {
+  deleteArticle: async (token, id) => {
+    return await request(
+      `/general/articles/delete/${id}`,
+      "DELETE",
+      {},
+      { Authorization: `Bearer ${token}` }
+    );
+  },
+  comment: async (comment, token, id) => {
+    return await request(
+      `/general/articles/comment/${id}`,
+      "POST",
+      { comment },
+      { Authorization: `Bearer ${token}` }
+    );
+  },
   createArticle: async (token, title, text, cover, summary) => {
     return await request(
       "/general/articles/create",

@@ -1,6 +1,7 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const generateAccessToken = require("../../../functions/generateAccessToken");
+const adminCheck = require("../../../middleware/adminCheck");
 const authenticateToken = require("../../../middleware/authenticateToken");
 const checkAPIKey = require("../../../middleware/checkAPIKey");
 const router = express.Router();
@@ -45,6 +46,19 @@ router.get("/sync", checkAPIKey, authenticateToken, (req, res) => {
   User.findOne({ _id: req.user._id }).then((user) => {
     const token = generateAccessToken(user);
     res.json({ error: false, data: { user, token }, message: "Synced User" });
+  });
+});
+
+/**
+ *
+ * ADMIN DELETE
+ * METHOD: DELETE
+ *
+ */
+
+router.delete("/admin/delete/:id", checkAPIKey, adminCheck, (req, res) => {
+  User.findOneAndDelete({ _id: req.params.id }).then((user) => {
+    res.json({ error: false, message: "Account Deleted" });
   });
 });
 

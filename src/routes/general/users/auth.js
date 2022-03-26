@@ -7,12 +7,29 @@ const checkAPIKey = require("../../../middleware/checkAPIKey");
 const generateAccessToken = require("../../../functions/generateAccessToken");
 const checkSuperSecretPassword = require("../../../middleware/checkSuperSecretPassword");
 const authenticateToken = require("../../../middleware/authenticateToken");
+const rateLimit = require("express-rate-limit");
 
 const crypto = require("crypto");
 const emailSerivce = require("../../../services/emailSerivce");
 
 const User = mongoose.model("User");
 const RToken = mongoose.model("RToken");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 15,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: function (req, res) {
+    res.json({
+      error: true,
+      message:
+        "Nuk mundeni të dërgoni kërkesa te serveri. Provoni përsëri pas pak",
+    });
+  },
+});
+
+router.use(limiter);
 
 require("dotenv").config();
 

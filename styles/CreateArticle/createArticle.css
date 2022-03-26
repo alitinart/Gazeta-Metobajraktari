@@ -3,15 +3,9 @@
 }
 
 .form-article {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .form-article .form-control {
   padding: 10px;
   border-radius: 3px;
@@ -22,7 +16,6 @@
 .rdw-dropdown-wrapper a span {
   color: black;
 }
-
 .rdw-dropdown-wrapper .rdw-dropdown-optionwrapper {
   color: black;
 }
@@ -43,7 +36,6 @@
   font-size: 20px;
   border: 3px solid #0a0e3c;
   cursor: pointer;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   margin-top: 20px;
 }
@@ -51,5 +43,4 @@
 .submitButton:hover {
   background-color: transparent;
   color: #0a0e3c;
-}
-/*# sourceMappingURL=createArticle.css.map */
+}/*# sourceMappingURL=createArticle.css.map */

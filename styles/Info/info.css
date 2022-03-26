@@ -3,17 +3,10 @@
 }
 
 .team {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -28,25 +21,20 @@
   padding: 30px;
   border-radius: 3px;
 }
-
 .member img {
   border-radius: 100%;
   background-color: white;
   height: 300px;
 }
-
 .member .name {
   font-weight: bold;
   font-size: 30px;
 }
-
 .member .position {
   font-weight: bold;
   font-size: 20px;
   margin: 10px 0;
 }
-
 .member .saying {
   font-style: italic;
-}
-/*# sourceMappingURL=info.css.map */
+}/*# sourceMappingURL=info.css.map */

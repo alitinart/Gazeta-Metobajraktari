@@ -64,7 +64,7 @@ router.post(
  */
 
 router.post("/register/student", checkAPIKey, (req, res) => {
-  const { fullName, classNumber, password, email, role } = req.body;
+  const { fullName, classNumber, password, email } = req.body;
   User.findOne({ email }).then(async (user) => {
     if (user) {
       return res.json({
@@ -81,7 +81,7 @@ router.post("/register/student", checkAPIKey, (req, res) => {
       class: classNumber,
       email,
       password: hashedPassword,
-      role: "autor",
+      role: "student",
     });
 
     newUser.save();

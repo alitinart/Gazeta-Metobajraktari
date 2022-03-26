@@ -13,6 +13,7 @@ const Article = mongoose.model("Article");
 require("dotenv").config();
 
 router.use("/auth", require("./auth"));
+router.use("/verify", require("./verify"));
 
 /**
  *

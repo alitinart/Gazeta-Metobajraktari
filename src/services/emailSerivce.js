@@ -16,12 +16,12 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-module.exports = function emailProvider(to, subject, text) {
+module.exports = function emailService(to, subject, html) {
   let mailOptions = {
     from: user,
     to,
     subject,
-    text,
+    html,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

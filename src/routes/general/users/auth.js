@@ -8,6 +8,9 @@ const generateAccessToken = require("../../../functions/generateAccessToken");
 const checkSuperSecretPassword = require("../../../middleware/checkSuperSecretPassword");
 const authenticateToken = require("../../../middleware/authenticateToken");
 
+const crypto = require("crypto");
+const emailSerivce = require("../../../services/emailSerivce");
+
 const User = mongoose.model("User");
 const RToken = mongoose.model("RToken");
 
@@ -37,12 +40,27 @@ router.post(
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(password, salt);
 
+      const verificationCode = crypto.randomBytes(12).toString("hex");
+
+      emailSerivce(
+        email,
+        "Verifiko llogarinë tënde",
+        `<h1>Verifiko llogarinë tënde</h1>
+      <p>Një llogari me këtë email është hapur tek Gazeta Metobajraktari</p>
+      <p>Për ta verifikuar llogarinë e juaj përdoreni këtë kod: <strong>${verificationCode}</strong></p>
+      <h3>Nëse nuk keni hapur një llogari tek faqja jonë zyrtare vetëm injoroni këtë email</h3>
+      <p>Sinqerisht,</p>
+      <p>Ekipi i Gazetës Metobajraktari</p>`
+      );
+
       const newUser = new User({
         fullName,
         class: classNumber,
         email,
         password: hashedPassword,
         role: "autor",
+        verified: false,
+        code: verificationCode,
       });
 
       newUser.save();
@@ -76,12 +94,27 @@ router.post("/register/student", checkAPIKey, (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    const verificationCode = crypto.randomBytes(12).toString("hex");
+
+    emailSerivce(
+      email,
+      "Verifiko llogarinë tënde",
+      `<h1>Verifiko llogarinë tënde</h1>
+      <p>Një llogari me këtë email është hapur tek Gazeta Metobajraktari</p>
+      <p>Për ta verifikuar llogarinë e juaj përdoreni këtë kod: <strong>${verificationCode}</strong></p>
+      <h3>Nëse nuk keni hapur një llogari tek faqja jonë zyrtare vetëm injoroni këtë email</h3>
+      <p>Sinqerisht,</p>
+      <p>Ekipi i Gazetës Metobajraktari</p>`
+    );
+
     const newUser = new User({
       fullName,
       class: classNumber,
       email,
       password: hashedPassword,
       role: "student",
+      verified: false,
+      code: verificationCode,
     });
 
     newUser.save();

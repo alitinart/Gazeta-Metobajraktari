@@ -5,6 +5,7 @@ const adminCheck = require("../../../middleware/adminCheck");
 const authenticateToken = require("../../../middleware/authenticateToken");
 const checkAPIKey = require("../../../middleware/checkAPIKey");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const User = mongoose.model("User");
 const Article = mongoose.model("Article");
@@ -133,8 +134,20 @@ router.get("/:id", checkAPIKey, (req, res) => {
  *
  */
 
-router.patch("/update", checkAPIKey, authenticateToken, (req, res) => {
-  User.findOneAndUpdate({ _id: req.user._id }, { $set: { ...req.body } })
+router.patch("/update", checkAPIKey, authenticateToken, async (req, res) => {
+  const { password } = req.body;
+  let hashedPassword = "";
+  let changes = {};
+
+  if (password) {
+    let salt = await bcrypt.genSalt();
+    hashedPassword = await bcrypt.hash(password, salt);
+    changes = { password: hashedPassword };
+  } else {
+    changes = { ...req.body };
+  }
+
+  User.findOneAndUpdate({ _id: req.user._id }, { $set: { ...changes } })
     .then(() =>
       res.json({ error: false, message: "Informatat u ndryshuan me sukses" })
     )

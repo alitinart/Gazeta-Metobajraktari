@@ -7,6 +7,7 @@ const checkAPIKey = require("../../../middleware/checkAPIKey");
 const router = express.Router();
 
 const User = mongoose.model("User");
+const Article = mongoose.model("Article");
 
 require("dotenv").config();
 
@@ -57,8 +58,45 @@ router.get("/sync", checkAPIKey, authenticateToken, (req, res) => {
  */
 
 router.delete("/admin/delete/:id", checkAPIKey, adminCheck, (req, res) => {
-  User.findOneAndDelete({ _id: req.params.id }).then((user) => {
-    res.json({ error: false, message: "Account Deleted" });
+  User.findOneAndDelete({ _id: req.params._id }).then(() => {
+    Article.find({}).then((articles) => {
+      articles.forEach(async (article) => {
+        let comments = article.comments;
+        comments = comments.filter((comment) => {
+          return comment.userId.toString() !== req.params._id.toString();
+        });
+        await Article.findOneAndUpdate(
+          { _id: article._id },
+          { $set: { comments } }
+        );
+      });
+      res.json({ error: false, message: "Llogaria u fshi me sukses" });
+    });
+  });
+});
+
+/**
+ *
+ * Delete Account
+ * METHOD: DELETE
+ *
+ */
+
+router.delete("/delete", checkAPIKey, authenticateToken, (req, res) => {
+  User.findOneAndDelete({ _id: req.user._id }).then(() => {
+    Article.find({}).then((articles) => {
+      articles.forEach(async (article) => {
+        let comments = article.comments;
+        comments = comments.filter((comment) => {
+          return comment.userId.toString() !== req.user._id.toString();
+        });
+        await Article.findOneAndUpdate(
+          { _id: article._id },
+          { $set: { comments } }
+        );
+      });
+      res.json({ error: false, message: "Llogaria u fshi me sukses" });
+    });
   });
 });
 

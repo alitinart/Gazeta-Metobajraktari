@@ -63,7 +63,7 @@ export default function Register({ data }) {
           <input
             className="form-control"
             type={"text"}
-            placeholder="Emri Juaj sh. Nart Aliti"
+            placeholder="Emri Juaj sh. Filan Fisteku"
             required
             value={fullName}
             onChange={(e) => {
@@ -73,7 +73,7 @@ export default function Register({ data }) {
           <input
             className="form-control"
             type={"text"}
-            placeholder="Klasa Juaj sh. VIII/3"
+            placeholder="Klasa Juaj sh. IX/3"
             required
             value={classNumber}
             onChange={(e) => {

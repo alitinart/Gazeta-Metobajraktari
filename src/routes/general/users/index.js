@@ -65,7 +65,7 @@ router.delete("/admin/delete/:id", checkAPIKey, adminCheck, (req, res) => {
       articles.forEach(async (article) => {
         let comments = article.comments;
         comments = comments.filter((comment) => {
-          return comment.userId.toString() !== req.params._id.toString();
+          return comment.userId.toString() !== req.params._id;
         });
         await Article.findOneAndUpdate(
           { _id: article._id },

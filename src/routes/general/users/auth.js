@@ -40,7 +40,7 @@ router.post(
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(password, salt);
 
-      const verificationCode = crypto.randomBytes(12).toString("hex");
+      const verificationCode = crypto.randomBytes(16).toString("hex");
 
       emailSerivce(
         email,
@@ -94,7 +94,7 @@ router.post("/register/student", checkAPIKey, (req, res) => {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const verificationCode = crypto.randomBytes(12).toString("hex");
+    const verificationCode = crypto.randomBytes(16).toString("hex");
 
     emailSerivce(
       email,

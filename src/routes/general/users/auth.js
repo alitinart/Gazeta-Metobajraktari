@@ -49,8 +49,8 @@ router.post(
       <p>Një llogari me këtë email është hapur tek Gazeta Metobajraktari</p>
       <p>Për ta verifikuar llogarinë e juaj përdoreni këtë kod: <strong>${verificationCode}</strong></p>
       <h3>Nëse nuk keni hapur një llogari tek faqja jonë zyrtare vetëm injoroni këtë email</h3>
-      <p>Sinqerisht,</p>
-      <p>Ekipi i Gazetës Metobajraktari</p>`
+      <p><strong>Sinqerisht,</strong></p>
+      <p><strong>Ekipi i Gazetës Metobajraktari</strong></p>`
       );
 
       const newUser = new User({
@@ -104,7 +104,7 @@ router.post("/register/student", checkAPIKey, (req, res) => {
       <p>Për ta verifikuar llogarinë e juaj përdoreni këtë kod: <strong>${verificationCode}</strong></p>
       <h3>Nëse nuk keni hapur një llogari tek faqja jonë zyrtare vetëm injoroni këtë email</h3>
       <p>Sinqerisht,</p>
-      <p>Ekipi i Gazetës Metobajraktari</p>`
+      <p><strong>Ekipi i Gazetës Metobajraktari</strong></p>`
     );
 
     const newUser = new User({

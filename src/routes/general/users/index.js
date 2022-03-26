@@ -61,19 +61,7 @@ router.get("/sync", checkAPIKey, authenticateToken, (req, res) => {
 
 router.delete("/admin/delete/:id", checkAPIKey, adminCheck, (req, res) => {
   User.findOneAndDelete({ _id: req.params._id }).then(() => {
-    Article.find({}).then((articles) => {
-      articles.forEach(async (article) => {
-        let comments = article.comments;
-        comments = comments.filter((comment) => {
-          return comment.userId.toString() !== req.params._id;
-        });
-        await Article.findOneAndUpdate(
-          { _id: article._id },
-          { $set: { comments } }
-        );
-      });
-      res.json({ error: false, message: "Llogaria u fshi me sukses" });
-    });
+    res.json("delted");
   });
 });
 

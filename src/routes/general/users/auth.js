@@ -15,13 +15,56 @@ require("dotenv").config();
 
 /**
  *
- * Register User
+ * Register Autor User
  * Method: POST
  *
  */
 
-router.post("/register", checkSuperSecretPassword, checkAPIKey, (req, res) => {
-  const { fullName, classNumber, password, email } = req.body;
+router.post(
+  "/register/autor",
+  checkSuperSecretPassword,
+  checkAPIKey,
+  (req, res) => {
+    const { fullName, classNumber, password, email, role } = req.body;
+    User.findOne({ email }).then(async (user) => {
+      if (user) {
+        return res.json({
+          error: true,
+          message: "Një llogari me atë email eksziston",
+        });
+      }
+
+      const salt = await bcrypt.genSalt();
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      const newUser = new User({
+        fullName,
+        class: classNumber,
+        email,
+        password: hashedPassword,
+        role: "autor",
+      });
+
+      newUser.save();
+
+      res.json({
+        error: false,
+        data: "Success",
+        message: "U regjistruat me sukses",
+      });
+    });
+  }
+);
+
+/**
+ *
+ * Register Student User
+ * Method: POST
+ *
+ */
+
+router.post("/register/student", checkAPIKey, (req, res) => {
+  const { fullName, classNumber, password, email, role } = req.body;
   User.findOne({ email }).then(async (user) => {
     if (user) {
       return res.json({
@@ -38,6 +81,7 @@ router.post("/register", checkSuperSecretPassword, checkAPIKey, (req, res) => {
       class: classNumber,
       email,
       password: hashedPassword,
+      role: "autor",
     });
 
     newUser.save();

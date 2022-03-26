@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export default function AccountIcon() {
   const state = useSelector((state) => state);
 
-  return state ? (
+  return state && localStorage.getItem("token") ? (
     <div className="account-button">
       <i
         className="bi bi-person"

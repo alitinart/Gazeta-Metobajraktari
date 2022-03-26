@@ -1,0 +1,25 @@
+.verify {
+  padding: 50px 5%;
+  height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.verify form .form-control {
+  padding: 10px;
+  border: 2px #0a0e3c solid;
+  width: 100%;
+  margin: 0;
+}
+.verify form button {
+  width: 100%;
+  background-color: #0a0e3c;
+  border: 2px #0a0e3c solid;
+  margin: 10px 0;
+  padding: 10px;
+  color: white;
+}
+.verify form button:hover {
+  color: #0a0e3c;
+}/*# sourceMappingURL=verify.css.map */

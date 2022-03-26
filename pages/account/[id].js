@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import authGuard from "../../guards/authGuard";
 import NotificationService from "../../services/notifications.service";
 import { userRequests } from "../../services/request.service";
+import Link from "next/link";
 
 export default function Account({ userObject }) {
   const state = useSelector((state) => state);
@@ -98,6 +99,25 @@ export default function Account({ userObject }) {
     }
   };
 
+  const deleteHandler = async () => {
+    const resDelete = userRequests.deleteUser(state.token);
+
+    if (resDelete.error) {
+      return NotificationService("Error", resDelete.message, "danger");
+    }
+
+    NotificationService("Sukses", resDelete.message, "success");
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("rTokenId");
+    await userRequests.logout(localStorage.getItem("rTokenId"), state.token);
+    dispatch({
+      type: "logout",
+    });
+
+    Router.push("/");
+  };
+
   return state && state.userObject ? (
     <>
       <Head>
@@ -107,6 +127,25 @@ export default function Account({ userObject }) {
       <div className="account">
         <h1 className="title">Llogaria e juaj</h1>
         <h1 className="title">{state.userObject.fullName}</h1>
+        {state.userObject.verified ? (
+          <p
+            style={{ textAlign: "center", color: "gray", marginBottom: "15px" }}
+          >
+            I Verifikuar
+          </p>
+        ) : (
+          <button
+            className="not-verified"
+            onClick={() => {
+              Router.push("/verify");
+            }}
+          >
+            I pa verifikuar
+          </button>
+        )}
+        <button className="btn btn-danger" onClick={deleteHandler}>
+          Fshij Llogarinë
+        </button>
         <div className="info-cards">
           <div className="email-card">
             <h1>{state.userObject.email}</h1>

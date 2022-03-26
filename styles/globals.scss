@@ -4,6 +4,8 @@
 @use "./Info/info.scss";
 @use "./Components/Footer.scss";
 // @use "./Account/Account.scss";
+
+@import url("./Verify/verify.css");
 @import url("./Account/Account.css");
 
 @import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,900,900italic);
@@ -58,6 +60,20 @@ a {
   img {
     margin: 0 auto;
     display: block;
+  }
+}
+
+.btn-danger {
+  background-color: rgb(250, 41, 41) !important;
+  color: white;
+  padding: 10px !important;
+  margin: 0 auto !important;
+  border: 2px rgb(250, 41, 41) solid !important;
+  display: block;
+
+  &:hover {
+    background-color: transparent !important;
+    color: rgb(250, 41, 41) !important;
   }
 }
 

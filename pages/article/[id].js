@@ -3,17 +3,8 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SidebarArticle from "../../components/Article/SidebarArticle";
+import verifyGuard from "../../guards/verifyGuard";
 import { articleRequests } from "../../services/request.service";
-
-// export async function getStaticProps() {
-//   const { data } = await articleRequests.getAllArticles();
-
-//   const paths = data.map((article) => ({
-//     params: { id: article._id.toString() },
-//   }));
-
-//   return { paths, fallback: false };
-// }
 
 export async function getServerSideProps({ params }) {
   const { data } = await articleRequests.getArticleById(params.id);
@@ -27,12 +18,19 @@ export default function Article({ article, articles }) {
 
   const state = useSelector((state) => state);
 
-  useEffect(() => {
+  useEffect(async () => {
     let sorted = [];
     articles.forEach((element) => {
       sorted.unshift(element);
     });
     setSortedArticles(sorted);
+    if (
+      localStorage.getItem("token") &&
+      !(await verifyGuard(localStorage.getItem("token")))
+    ) {
+      Router.push("/verify");
+    }
+
     return () => {};
   }, []);
   return (

@@ -30,6 +30,24 @@ async function request(pathname, method, data, providedHeaders) {
 }
 
 export const userRequests = {
+  // Verify User
+  verifyUser: async (token, code) => {
+    return await request(
+      `/general/users/verify`,
+      "POST",
+      { code },
+      { Authorization: `Bearer ${token}` }
+    );
+  },
+  // Delete User
+  deleteUser: async (token) => {
+    return await request(
+      `/general/users/delete`,
+      "DELETE",
+      {},
+      { Authorization: `Bearer ${token}` }
+    );
+  },
   // Update User
   updateUser: async (token, body) => {
     return await request(

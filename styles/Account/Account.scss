@@ -1,11 +1,29 @@
 .account {
   padding: 50px 5%;
+  .not-verified {
+    font-weight: bold;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #0a0e3c;
+    color: white;
+    margin: 0 auto;
+    display: block;
+    border-radius: 3px;
+    transition: 0.5s;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: #0a0e3c 2px solid;
+    &:hover {
+      background-color: transparent;
+      color: #0a0e3c;
+    }
+  }
   .info-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     div {
       background-color: #0a0e3c;
-      padding: 10px;
+      padding: 30px 10px;
       margin: 10px;
       border-radius: 3px;
       h1 {

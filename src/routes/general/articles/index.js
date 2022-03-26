@@ -155,4 +155,37 @@ router.get("/search/:query", checkAPIKey, (req, res) => {
   });
 });
 
+/**
+ *
+ * Add Comments
+ * Method: POST
+ *
+ */
+
+router.post(
+  "/comment/:id",
+  checkAPIKey,
+  authenticateToken,
+  async (req, res) => {
+    const { comment } = req.body;
+    const newComment = {
+      comment,
+      userId: req.user._id,
+      timestamp: new Date(),
+    };
+    const article = await Article.findOne({ _id: req.params.id });
+    let comments = article.comments;
+
+    comments.push(newComment);
+
+    Article.findOneAndUpdate({ _id: req.params.id }, { $set: { comments } })
+      .then(() => {
+        res.json({ error: false, message: "Komenti u postua" });
+      })
+      .catch((err) => {
+        res.json({ error: true, data: { ...err }, message: "Doli një error" });
+      });
+  }
+);
+
 module.exports = router;

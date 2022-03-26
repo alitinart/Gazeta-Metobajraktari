@@ -100,4 +100,30 @@ router.delete("/delete", checkAPIKey, authenticateToken, (req, res) => {
   });
 });
 
+/**
+ *
+ * Get User ID
+ * METHOD: GET
+ *
+ */
+
+router.get("/:id", checkAPIKey, (req, res) => {
+  User.findOne({ _id: req.params.id }).then((user) => {
+    if (!user) {
+      res.json({ error: true, message: "Nuk u gjet asnjë llogari me atë ID" });
+    }
+
+    res.json({
+      error: false,
+      message: "User",
+      data: {
+        fullName: user.fullName,
+        email: user.email,
+        class: user.class,
+        role: user.role,
+      },
+    });
+  });
+});
+
 module.exports = router;

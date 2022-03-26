@@ -131,19 +131,23 @@ export default function Article({ articleProp, articles }) {
             dangerouslySetInnerHTML={{ __html: article.text }}
           ></div>
           <div className="comments">
-            <div className="add-comment">
-              <textarea
-                className="form-control"
-                placeholder="Krijo Koment"
-                value={comment}
-                onChange={(e) => {
-                  setComment(e.target.value);
-                }}
-              ></textarea>
-              <button className="btn" onClick={commentHandler}>
-                Krijo
-              </button>
-            </div>
+            {state && state.token ? (
+              <div className="add-comment">
+                <textarea
+                  className="form-control"
+                  placeholder="Krijo Koment"
+                  value={comment}
+                  onChange={(e) => {
+                    setComment(e.target.value);
+                  }}
+                ></textarea>
+                <button className="btn" onClick={commentHandler}>
+                  Krijo
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
             <h1 style={{ marginTop: "10px" }}>
               Komente ({sortedComments.length})
             </h1>

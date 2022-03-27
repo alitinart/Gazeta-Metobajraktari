@@ -54,6 +54,8 @@ export default function Article({ articleProp, articles }) {
       return NotificationSerivce("Error", resComment.message, "danger");
     }
 
+    setComment("");
+
     const syncedArticle = await articleRequests.getArticleById(article._id);
     setArticle({ ...syncedArticle.data });
     setSortedComments([...syncedArticle.data.comments.reverse()]);
@@ -71,8 +73,6 @@ export default function Article({ articleProp, articles }) {
     if (resDeleteArticle.error) {
       return NotificationSerivce("Error", resDeleteArticle.message, "danger");
     }
-
-    setComment("");
 
     NotificationSerivce("Sukses", resDeleteArticle.message, "success");
     Router.push("/");
@@ -140,9 +140,15 @@ export default function Article({ articleProp, articles }) {
                   placeholder="Krijo Koment"
                   value={comment}
                   onChange={(e) => {
-                    setComment(e.target.value);
+                    if (
+                      (e.target.value < 150 && comment.length < 150) ||
+                      e.target.value.length <= 150
+                    ) {
+                      setComment(e.target.value);
+                    }
                   }}
                 ></textarea>
+                <p>{comment.length}/150</p>
                 <button className="btn" onClick={commentHandler}>
                   Krijo
                 </button>
@@ -157,7 +163,7 @@ export default function Article({ articleProp, articles }) {
               return (
                 <div className="comment" key={comment.timestamp}>
                   <div className="comment-info">
-                    <h3 style={{ marginBottom: "10px" }}>{comment.fullName}</h3>
+                    <h3 style={{ marginBottom: "5px" }}>{comment.fullName}</h3>
                     <p style={{ color: "gray", fontSize: "15px" }}>
                       {comment.timestamp}
                     </p>

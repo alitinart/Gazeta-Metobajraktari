@@ -127,9 +127,9 @@
     width: 100%;
   }
   .main .sidebar {
-    margin-top: 50px;
+    margin-top: 50px !important;
     width: 100%;
-    margin-left: 0px;
+    margin-left: 0px !important;
   }
 }
 .content {

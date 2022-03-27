@@ -104,7 +104,8 @@ a {
   background-color: #0a0e3c;
   display: flex;
   justify-content: space-around;
-  .nav {
+  .nav,
+  .menu {
     display: flex;
     list-style-type: none;
     justify-content: center;

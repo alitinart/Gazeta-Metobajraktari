@@ -587,34 +587,46 @@ a {
   justify-content: space-around;
 }
 .header .nav,
-.header-mobile .nav {
+.header .menu,
+.header-mobile .nav,
+.header-mobile .menu {
   display: flex;
   list-style-type: none;
   justify-content: center;
 }
 .header .nav .active a,
-.header-mobile .nav .active a {
+.header .menu .active a,
+.header-mobile .nav .active a,
+.header-mobile .menu .active a {
   border-bottom: 3px white solid;
 }
 .header .nav .secondary a,
-.header-mobile .nav .secondary a {
+.header .menu .secondary a,
+.header-mobile .nav .secondary a,
+.header-mobile .menu .secondary a {
   color: #0a0e3c;
   background-color: #fff;
   border: 2px #fff solid;
 }
 .header .nav .secondary a:hover,
-.header-mobile .nav .secondary a:hover {
+.header .menu .secondary a:hover,
+.header-mobile .nav .secondary a:hover,
+.header-mobile .menu .secondary a:hover {
   background-color: transparent;
   color: #fff;
 }
 .header .nav div,
-.header-mobile .nav div {
+.header .menu div,
+.header-mobile .nav div,
+.header-mobile .menu div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .header .nav div a,
-.header-mobile .nav div a {
+.header .menu div a,
+.header-mobile .nav div a,
+.header-mobile .menu div a {
   margin: 0 10px;
   font-weight: bold;
   padding: 5px;
@@ -623,17 +635,23 @@ a {
   cursor: pointer;
 }
 .header .nav div a i,
-.header-mobile .nav div a i {
+.header .menu div a i,
+.header-mobile .nav div a i,
+.header-mobile .menu div a i {
   transition: 0.1s;
   margin-right: 5px;
 }
 .header .nav div a:hover,
-.header-mobile .nav div a:hover {
+.header .menu div a:hover,
+.header-mobile .nav div a:hover,
+.header-mobile .menu div a:hover {
   background-color: white;
   color: #0a0e3c;
 }
 .header .nav div a:hover i,
-.header-mobile .nav div a:hover i {
+.header .menu div a:hover i,
+.header-mobile .nav div a:hover i,
+.header-mobile .menu div a:hover i {
   color: #0a0e3c;
 }
 .header div input,

@@ -65,12 +65,33 @@ export default function Header() {
         <img src={Logo.src} width="100px" className="mobile-logo" />
         <div className="header-mobile">
           <ul className="menu">
-            <div className={router.pathname == "/info" ? "active" : ""}>
+            <div className={router.pathname == "/" ? "active" : ""}>
               <Link href={"/"}>Ballina</Link>
             </div>
             <div className={router.pathname == "/info" ? "active" : ""}>
               <Link href={"/info"}>Për Ne</Link>
             </div>
+            {state && state.userObject ? (
+              <>
+                <div className="secondary">
+                  <a onClick={logout}>Ç'kyçuni</a>
+                </div>
+                <h1
+                  className="username"
+                  style={{
+                    fontSize: "20px",
+                    margin: "auto",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {state.userObject.fullName}
+                </h1>
+              </>
+            ) : (
+              <div className={router.pathname.includes("auth") ? "active" : ""}>
+                <Link href={"/auth/login"}>Kyçu</Link>
+              </div>
+            )}
           </ul>
         </div>
       </div>

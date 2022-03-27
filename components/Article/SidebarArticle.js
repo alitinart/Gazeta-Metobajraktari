@@ -1,5 +1,4 @@
 import React from "react";
-import Router from "next/router";
 
 export default function SidebarArticle({ article }) {
   return (
@@ -14,7 +13,7 @@ export default function SidebarArticle({ article }) {
         <button
           className="btn"
           onClick={() => {
-            Router.push(`/article/${article._id}`);
+            window.location.href = `/article/${article._id}`;
           }}
         >
           Lexo

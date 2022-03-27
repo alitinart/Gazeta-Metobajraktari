@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SidebarArticle from "../../components/Article/SidebarArticle";
@@ -31,7 +31,6 @@ export default function Article({ articleProp, articles }) {
     ) {
       Router.push("/verify");
     }
-
     return () => {};
   }, []);
 

@@ -33,8 +33,9 @@ export default function EditArticle({ article }) {
   );
 
   useEffect(() => {
-    setEditorState(EditorState.createWithContent(stateFromHTML(article.text)));
-
+    let text = article.text.replace("<figure>&nbsp;</figure>", "");
+    setEditorState(EditorState.createWithContent(stateFromHTML(text)));
+    console.log(editorState);
     return () => {};
   }, []);
 

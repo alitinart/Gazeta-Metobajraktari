@@ -107,10 +107,11 @@ export default function Account({ userObject }) {
     }
 
     NotificationService("Sukses", resDelete.message, "success");
+    console.log(resDelete);
 
+    await userRequests.logout(localStorage.getItem("rTokenId"), state.token);
     localStorage.removeItem("token");
     localStorage.removeItem("rTokenId");
-    await userRequests.logout(localStorage.getItem("rTokenId"), state.token);
     dispatch({
       type: "logout",
     });
